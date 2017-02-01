@@ -4,7 +4,7 @@
 
 	while ($num > 0){
 		$lastNum = $num % 10;
-		$num = floor($num / 10);
+		$num = (int)($num/10);
 		if ($lastNum < 5){
 			$b++;
 		}
