@@ -1,16 +1,14 @@
 <?php 
-	$num = 123456789123;
-	settype($num, "string");
+	$num = 123456789;
 	$b = 0;//счетчик
-	
-	$len = strlen($num);
-	
-	for ($i = 0; $i < $len; $i++){
-		if ($num[$i] < 5){
+
+	while ($num > 0){
+		$lastNum = $num % 10;
+		$num = floor($num / 10);
+		if ($lastNum < 5){
 			$b++;
-		}else{
-			continue;
 		}
 	}
+	
 	echo "Данное число содержит " . $b . " цифр меньше 5";
 ?>
