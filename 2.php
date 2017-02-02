@@ -1,5 +1,5 @@
 <?php 
-	$n = 3;//по условию
+	$n = 4;//по условию
 	
  	for ($i = 1000; $i <= 9999; $i++){
 		$sumLastNum = 0;
@@ -12,8 +12,11 @@
 			$lastNum = $num % 10;
 			$sumLastNum += $lastNum;
 			$num = (int)($num / 10);
-			if ($num <= 0 && $sumLastNum == $n){
-				echo $i."<br>";
+			if ($lastNum > $n){
+				continue 2;
 			}
-		} while ($num > 0 || $lastNum > $n);
+		} while ($num > 0);
+		if ($sumLastNum == $n){
+			echo $i."<br>";
+		}
 	}
