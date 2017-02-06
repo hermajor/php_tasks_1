@@ -1,10 +1,13 @@
 <?php 
 
+$exception = 3333;
+$sumCondition = 12;
+
 for ($i = 1000; $i <= 9999; $i++){
 	$n = $i;
 	$sum = 0;
 
-	while ($n > 0 && $i != 3333){	//(int)($n/10) != 0
+	while ($n > 0 && $i != $exception){
 		$lastNum = $n % 10;
 		$n = (int)($n / 10);
 		
@@ -19,7 +22,7 @@ for ($i = 1000; $i <= 9999; $i++){
 			continue 3;
 		}
 	}
-	if ($sum == 12){
+	if ($sum == $sumCondition){
 		echo $i.'<br>';
 	}
 }
