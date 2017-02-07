@@ -1,6 +1,6 @@
 <?php 
 
-$num = 25;
+$num = 625;
 $n = $num;
 $counter = 1;
 
@@ -10,7 +10,13 @@ while ($n > 0){
 	$counter *= 10;
 }
 
-$powNum = pow($num, 2);
+$power = 2; //степень
+$powNum = $num;
+
+for($i = 2; $i <= $power; $i++){
+	$powNum *= $num;
+}
+
 $lastPowNum = $powNum % $counter;
 
 if ($num == $lastPowNum){
