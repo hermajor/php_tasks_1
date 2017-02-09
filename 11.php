@@ -1,10 +1,21 @@
 <?php
 
 $m = 999;
+$counter = 0;
+$factor = 10; //множитель
 
 for ($i = 0; $i < $m; $i++){
 	
 	if ($i > 9){
+		if ($i % $factor == 0){
+			$counter ++;
+			if ($counter >= 9){
+				$counter = 0;
+				$factor *= 10;
+			}
+			echo $i.'<br>';
+			continue;
+		}
 		$n = $i;
 		$sumOfNum = 0;
 		
