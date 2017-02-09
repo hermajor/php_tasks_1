@@ -15,7 +15,7 @@ while ($n > 0){
 	
 $halfNum = $counter / 2;
 
-if (@($counter % $halfNum) == 0){ // Погашаем ошибку при делении на ноль
+if ($halfNum >= 1){
 
 	$firstPart = (int)($num / myPow(10, $halfNum));		
 	$lastPart = $num % myPow(10, $halfNum);
@@ -33,8 +33,21 @@ if (@($counter % $halfNum) == 0){ // Погашаем ошибку при дел
 function myPow($number, $power){
 	$result = $number;
 	
-	for($i = 2; $i <= $power; $i++){
-		$result *= $number;
+	if ($power > 0){
+		for($i = 2; $i <= $power; $i++){
+			$result *= $number;
+		}
+		return $result;
+	} elseif ($power < 0){
+		if ($number != 0){
+			for($i = 0; $i >= $power; $i--){
+				$result /= $number;
+			}
+			return $result;
+		} else {
+			return INF;
+		}
+	} else {
+		return 1;
 	}
-	return $result;
 }
