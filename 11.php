@@ -13,7 +13,6 @@ for ($i = 0; $i < $m; $i++){
 				$counter = 0;
 				$factor *= 10;
 			}
-			echo $i.'<br>';
 			continue;
 		}
 		$n = $i;
@@ -28,7 +27,5 @@ for ($i = 0; $i < $m; $i++){
 		if (($i % $sumOfNum) == 0){
 			echo $i.'<br>';
 		}
-	} else {
-		echo $i.'<br>';
 	}
 }
