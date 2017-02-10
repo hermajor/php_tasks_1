@@ -1,18 +1,34 @@
 <?php
 
-$m = 3571; //заданное число
+$number = 3571;
+var_dump (primeNum($number));
 
-for ($i = 2; $i < $m; $i++){
-	$lastNum = $m % $i;
-	$condition = false;
-
-	if ($lastNum == 0){
-		echo 'Число '.$m.' НЕ является простым <br>';
-		break;
+function primeNum($num){
+	$num = (float)$num;
+	if ($num % 2 == 0 || $num <= 0 || $num / (int)$num != 1){
+		$mess = 'Число '.$num.' НЕ является простым.'; // Четное, меньше нуля, дробное, массив, строка
+		return $mess;
 	}
-	$condition = true;
-}
+	if ($num == 2 || $num == 3){
+		$mess = 'Число '.$num.' является простым.';
+		return $mess;
+	}
+	
+	$sqrtNum = (int)sqrt($num) + 1;
+	
+	for ($i = 3; $i <= $sqrtNum; $i += 2){
+		$lastNum = $num % $i;
+		$condition = false;
 
-if ($condition == true){
-	echo 'Число '.$m.' является простым <br>';
+		if ($lastNum == 0){
+			$mess = 'Число '.$num.' НЕ является простым';
+			return $mess;
+		}
+		$condition = true;
+	}
+
+	if ($condition == true){
+		$mess = 'Число '.$num.' является простым';
+		return $mess;
+	}
 }
