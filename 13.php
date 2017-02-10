@@ -26,11 +26,21 @@ if ($halfNum >= 1){
 		echo 'Число '.$num.' НЕ симметричное <br>';
 	}
 } else {
-	echo 'Число '.$num.' НЕ симметричное, т.к. содержит нечетное кол-во цифр <br>';
+	echo 'Число '.$num.' НЕ симметричное, т.к. содержит всего одну цифру <br>';
 }
 
-//------------------------------------------------------------------
-function myPow($number, $power){
+//Функция корректно работает только для целочисленных значений $power
+function myPow($number, $power){	
+	$number = (float)$number;
+	$power = (int)$power;
+	
+	if ($number == 1 || ($number == 0 && $power == 0)){
+		return 1;
+	} elseif ($number == 0 && $power == 1){
+		return 0;
+	} elseif ($number == 0 && $power < 0){
+		return INF;
+	}
 	$result = $number;
 	
 	if ($power > 0){
@@ -38,16 +48,11 @@ function myPow($number, $power){
 			$result *= $number;
 		}
 		return $result;
+		
 	} elseif ($power < 0){
-		if ($number != 0){
-			for($i = 0; $i >= $power; $i--){
-				$result /= $number;
-			}
-			return $result;
-		} else {
-			return INF;
+		for($i = 0; $i >= $power; $i--){
+			$result /= $number;
 		}
-	} else {
-		return 1;
+		return $result;
 	}
 }
