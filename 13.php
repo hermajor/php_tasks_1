@@ -34,7 +34,7 @@ function myPow($number, $power){
 	$number = (float)$number;
 	$power = (int)$power;
 	
-	if ($power == 0 || $power == 1 or $number == 0 || $number == 1 && $power > 0){
+	if (($power == 0 || $power == 1) || ($number == 0 || $number == 1 && $power > 0)){
 		return $number;
 	}
 	
