@@ -30,17 +30,14 @@ if ($halfNum >= 1){
 }
 
 //Функция корректно работает только для целочисленных значений $power
-function myPow($number, $power){	
+function myPow($number, $power){
 	$number = (float)$number;
 	$power = (int)$power;
 	
-	if ($number == 1 || ($number == 0 && $power == 0)){
-		return 1;
-	} elseif ($number == 0 && $power == 1){
-		return 0;
-	} elseif ($number == 0 && $power < 0){
-		return INF;
+	if ($power == 0 || $power == 1 or $number == 0 || $number == 1 && $power > 0){
+		return $number;
 	}
+	
 	$result = $number;
 	
 	if ($power > 0){
