@@ -1,51 +1,37 @@
 <?php
 
-$counter = 0;
-$maxViews = 10;
+$display = 10;
+$iMin = 2; //продумать ввод четного и привести его к нечетному
+$iMax = 999; // пока не используется
 
-for ($i = 3; $i <= 3571; $i+=2){
-	$firstNum = $i;
-	
-	if ($counter >= $maxViews){
-		break;
-	}
-	
-	if (primeNum($i)){
-		$secondNum = $firstNum + 2;
+$result = couplePrime($display, $iMin, $iMax);
+var_dump($result);
+
+function couplePrime($display, $iMin, $iMax){
+		$num = $iMin;
+		//$num = (float)$num;
+		if ($num % 2 == 0 || $num <= 0 || $num / (int)$num != 1){
+			//return false;
+			return couplePrime($display, $iMin+1, $iMax);//если начали с четного числа
+		}
+		if ($num == 3){
+			//return true;
+			echo $num.'<br>';
+			return couplePrime($display - 1, $iMin + 2, $iMax);
+		}
 		
-		if (!primeNum($secondNum)){
-			$i += 2;
-			continue;
+		$sqrtNum = (int)sqrt($num) + 1;
+		
+		for ($i = 3; $i <= $sqrtNum; $i += 2){
+			$lastNum = $num % $i;
+			if ($lastNum == 0){
+				//return false;
+				return couplePrime($display, $iMin+2, $iMax);
+			}
 		}
-	} else {
-		continue;
-	}
-	echo $firstNum.' и '.$secondNum.'<br>';
-	$counter++;
-}
-
-function primeNum($num){
-	$num = (float)$num;
-	if ($num % 2 == 0 || $num <= 0 || $num / (int)$num != 1){
-		return false;
-	}
-	if ($num == 2 || $num == 3){
-		return true;
-	}
-	
-	$sqrtNum = (int)sqrt($num) + 1;
-	
-	for ($i = 3; $i <= $sqrtNum; $i += 2){
-		$lastNum = $num % $i;
-		$condition = false;
-
-		if ($lastNum == 0){
-			return false;
+		if ($display > 0){
+			echo $num.'<br>';
+			return couplePrime($display - 1, $iMin + 2, $iMax);
 		}
-		$condition = true;
-	}
-
-	if ($condition == true){
-		return true;
-	}
+		return 'Конец';
 }
