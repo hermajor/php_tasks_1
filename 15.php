@@ -8,18 +8,17 @@ if ($n < 0){
 	$n *= -1;
 }
 
-if ($n % 2 == 0){
-    // $n - четное число
-    $startI = 2;
-    $inc = 1;
-    $maxDiv = (int)($n / 2);
-} 
+// $n - четное число
+$startI = 2;
+$inc = 1;
+
 if ($n % 2 != 0) {
     // $n - НЕ четное число
     $startI = 3;
     $inc = 2;
-    $maxDiv = (int)($n / 3);
 }
+
+$maxDiv = (int)($n / $startI);
 
 for ($i = $startI; $i <= $maxDiv; $i += $inc){
     if ($n % $i == 0){
