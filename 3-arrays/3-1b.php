@@ -19,7 +19,7 @@ for ($i = $maxKey; $i >= 0; $i--) {
 function myCount($array){
 	$countElem = 0;
 	
-	while ($array[$countElem]){
+	while ($array[$countElem] || $array[$countElem] === 0){
 		$countElem++;
 	}
 	return $countElem;
