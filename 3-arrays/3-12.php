@@ -7,16 +7,12 @@ $biggerMinus = null; //наибольшей среди отрицательны�
 $smallerPlus = null; //наименьший среди положительных
 
 while ($arr[$key] || $arr[$key] === 0 || $arr[$key] === false){
-	if ($arr[$key] < 0) {
-		if ($arr[$key] > $biggerMinus) {
+	if ($arr[$key] < 0 && $arr[$key] > $biggerMinus) {
 			$biggerMinus = $arr[$key];
-		}
 	}
 	
-	if ($arr[$key] > 0) {
-		if ($arr[$key] < $smallerPlus || $smallerPlus === null) {
+	if ($arr[$key] > 0 && ($arr[$key] < $smallerPlus || $smallerPlus === null)) {
 			$smallerPlus = $arr[$key];
-		}
 	}
 	$key++;
 }
