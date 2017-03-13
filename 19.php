@@ -17,14 +17,6 @@ function lcm($m, $n){
 //Алгоритм Евклида
 function gcd($m, $n){
 	
-	function gcdIn($a, $b){
-		if($b == 0){
-			return $a;
-		}
-		$a = $a % $b;
-		return gcdIn($b, $a);
-	}
-	
 	if (($m == 0 || $n == 0) && ($m > 0 || $n > 0)){
 		return gcdIn($m, $n);
 	}
@@ -33,4 +25,12 @@ function gcd($m, $n){
 		return 'Необходимо вводить <b> натуральные </b> числа';
 	}
 	return gcdIn($m, $n);
+}
+
+function gcdIn($a, $b){
+	if($b == 0){
+		return $a;
+	}
+	$a = $a % $b;
+	return gcdIn($b, $a);
 }
