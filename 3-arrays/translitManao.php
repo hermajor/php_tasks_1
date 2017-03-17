@@ -2,20 +2,16 @@
 //в качестве входного параметра принимает ID инфоблока
 function translitManao($iblockID){
 	$arSelect = Array("IBLOCK_ID", "ID", "NAME", "CODE");
-	$arFilter = Array("IBLOCK_ID" => $iblockID, "ACTIVE" => "Y");
+	$arFilter = Array("IBLOCK_ID" => $iblockID);
 	
-	$el = new CIBlockElement;
-	$res = $el->GetList(Array(), $arFilter, false, Array(), $arSelect);
-	$arParams = array("replace_space"=>"-","replace_other"=>"-");
+	$IBElement = new CIBlockElement;
+	$getList = $IBElement->GetList(Array(), $arFilter, false, Array(), $arSelect);
 
-	while($ob = $res->GetNextElement()){
-		$arFields = $ob->GetFields();
-		
-		$arLoadProductArray = Array(
-			"CODE" => Cutil::translit($arFields['NAME'],"ru",$arParams)
-		);
+	foreach($getList->arResult as $element){
+		$newCode = Cutil::translit($element['NAME'],"ru",array("replace_space"=>"-","replace_other"=>"-"));
 
-		$PRODUCT_ID = $arFields['ID'];
-		$update = $el->Update($PRODUCT_ID, $arLoadProductArray);
+		if ($element['CODE'] != $newCode) {
+			$IBElement->Update($element['ID'], Array("CODE" => $newCode));
+		}
 	}
 }
