@@ -11,7 +11,12 @@ function translitManao($iblockID){
 		$newCode = Cutil::translit($element['NAME'],"ru",array("replace_space"=>"-","replace_other"=>"-"));
 
 		if ($element['CODE'] != $newCode) {
-			$IBElement->Update($element['ID'], Array("CODE" => $newCode));
+			$update = $IBElement->Update($element['ID'], Array("CODE" => $newCode));
+			
+			if ($update == false) {
+				echo 'В ходе обновления свойств элемента с ID: ' . $element['ID'] . '<br>';
+				echo 'произошла ошибка: ' . $update->LAST_ERROR . '<br>';
+			} 
 		}
 	}
 }
